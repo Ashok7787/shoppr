@@ -11,7 +11,7 @@ import {
   View,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {addToCart, removeFromCart} from './redux/action';
+import {addToCart, removeFromCart} from './ProductAction';
 const Product = props => {
   const item = props.item;
   const dispatch = useDispatch();
@@ -24,14 +24,14 @@ const Product = props => {
     dispatch(removeFromCart(item.name));
   };
   useEffect(() => {
-    let result = cartItems.filter(element => {
-      return element.name === item.name;
-    });
-    if(result.length){
-      setIsAdded(true)
-    }else{
-      setIsAdded(false)
-    }
+    // let result = cartItems.filter(element => {
+    //   return element.name === item.name;
+    // });
+    // if(result.length){
+    //   setIsAdded(true)
+    // }else{
+    //   setIsAdded(false)
+    // }
     // if (cartItems && cartItems.length) {
     //   cartItems.forEach(element => {
     //     if (element.name === item.name) {
@@ -51,7 +51,9 @@ const Product = props => {
       <Text style={{fontSize: 24}}>{item.name}</Text>
       <Text style={{fontSize: 24}}>{item.color}</Text>
       <Text style={{fontSize: 24}}>{item.price}</Text>
-      <Image style={{width: 200, height: 200}} source={{uri: item.image}} />
+      <Image style={{width: 200, height: 200}} 
+     // source={{uri: item.imageId}}
+       />
       {isAdded ? (
         <Button
           title="Remove to cart"

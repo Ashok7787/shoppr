@@ -2,7 +2,7 @@ import React, {useRef, useEffect, useState} from 'react';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import ProductWrapper from './component/ProductWrapper';
+import ProductWrapper from './component/Product/ProductWrapper';
 import UserList from './component/UserList';
 const Stack = createNativeStackNavigator();
 const App = () => {
