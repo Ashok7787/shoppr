@@ -1,0 +1,356 @@
+import { StyleSheet, Dimensions, } from "react-native";
+
+const externalStyle=StyleSheet.create({
+  firstView:{
+    flex: 1,
+   // paddingHorizontal: 0,
+    position: 'relative',
+    backgroundColor: '#ffffff',
+    alignSelf:'center',
+  },
+  //main header
+  mainHeader:{
+    justifyContent: 'space-between',
+    border: '5px solid green',
+    backgroundColor: 'orange',
+    padding: 10,
+    height: Dimensions.get('window').height * 0.12,
+  },
+  //log in page
+  logoLP: {
+    width: 260,
+    height: 250,
+    alignSelf:'center',
+  },   
+  logoViewLP: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  bottomViewLP: {
+    flex: 1.5,
+    backgroundColor: '#FFFFFF',
+    bottom: 50,
+    borderTopStartRadius: 60,
+    borderTopEndRadius: 60,
+  },
+  welcomeLP: {
+    color: 'black',
+    padding:'10%',
+    fontSize: 30,
+    alignSelf: "center",
+    fontFamily: 'roboto',
+  },
+  //log in page button
+  titleStyleLB:{
+    color: 'black',
+    letterSpacing: 1,
+   // //textTransform: 'uppercase',
+    fontSize: 19,
+    fontFamily: 'roboto',                   
+  },
+  containerStyleLB:{
+    margin:'5%',
+    alignSelf: 'center',   
+    width: Dimensions.get('window').width / 1.2,
+  },
+  buttonStyleLBB:{
+    backgroundColor: 'white',
+   // borderRadius: 20,
+    borderColor:'#5B9BD5',
+    borderWidth:1.5,
+   
+  },
+  buttonStyleLBG:{
+    backgroundColor: 'white',
+   // borderRadius: 20,
+    borderColor:'#70AC47',
+    borderWidth:1.5,
+   
+  },
+  // Home page 
+  welcomeHP: {
+    margin: 'auto',
+    marginBottom:'10%',
+    fontSize: 22,       
+    color: '#000000',
+    fontFamily: 'roboto'
+},
+buttonStyleHP:{  
+    backgroundColor: 'white',
+   // borderRadius: 20,
+    borderColor:'black',
+    borderWidth:1.5,
+},
+    cardText:{
+        borderRadius: 10,       
+        height: 10,
+        backgroundColor: '#ffffff',
+       // fontSize: 25,
+        // paddingLeft: 20,
+        // paddingRight: 20
+    },
+    // viewCard: {
+    //     flex: 1,
+    //     paddingHorizontal: 16,
+    //     position: 'relative',
+    //     backgroundColor: '#ffffff',
+    // },
+    // inputContainer: {
+    //     paddingTop: 15
+    //   },
+      textInput: {
+        borderColor: '#CCCCCC',
+       borderTopWidth: 0,
+       borderBottomWidth: 0,
+        height: 40,
+        backgroundColor: '#ffffff',
+        fontSize: 20,       
+      },
+      container: {
+        flex: 1,
+    },
+    mainCard: {
+        //height: 510,
+        justifyContent: 'center',        
+        borderRadius: 40,
+       // width: 380,   
+       alignSelf:'center',         
+        elevation: 6,
+        shadowColor: '#6949FD',
+        shadowOpacity: 0.9,
+        shadowRadius: 2,
+        width: Dimensions.get('window').width - 20,
+        height: Dimensions.get('window').height * 0.67,
+    },
+    option: {       
+            backgroundColor: 'transparent',
+            height: 30,
+           // underlineColorAndroid: 'transparent',
+            width: 305,
+            fontSize: 15,
+           // marginLeft: 0,
+    },
+    viewOption: {
+        
+            borderWidth: 1.5,  
+            borderColor: '#000',                         
+           // height: 35,
+            borderRadius: 10,
+            flexDirection: 'row',
+            alignSelf:'flex-start',
+            margin:4,
+            //alignItems: 'center',
+           // justifyContent: 'space-between',
+          // paddingHorizontal: 20,
+          //  marginVertical: 10,
+          //  marginBottom: 3,
+          //  marginTop: 3,
+        
+    },
+
+    containerStyleC: {
+      borderRadius: 10,
+      borderColor: '#000',
+      borderWidth: 1.5,
+      marginLeft: 0,
+      //width: 100,
+      elevation: 4,
+      margin: 7,
+      height: 50,
+      width:100,
+      shadowColor: '#6949FD',
+      shadowOpacity: 0.2,
+    },    
+    containerStyleCN: {
+      borderRadius: 10,
+      //borderColor: '#000',
+      borderWidth: 1.5,
+      marginLeft: 0,
+      width: 110,
+      elevation: 4,
+      margin: 5,
+      //color:"white",
+      //shadowColor: '#6949FD',
+      shadowOpacity: 0.2,
+    }, 
+    titleStyle: {
+      color: '#000000',
+      marginHorizontal: 20,
+      fontSize: 13,
+      fontFamily: 'roboto',
+      //textTransform: 'uppercase',
+  },
+  buttonStyleAdd: {
+    // backgroundColor: 'rgba(255, 193, 7, 1)',
+    borderColor: 'rgba(255, 193, 7, 1)',
+    backgroundColor: '#ffffff',
+    borderWidth: 1.5,
+     borderRadius: 15,
+   },
+   buttonStyleAddQuizName: {
+    // backgroundColor: 'rgba(255, 193, 7, 1)',
+    borderColor: 'rgba(255, 193, 7, 1)',
+    backgroundColor: '#ffffff',
+    borderWidth: 1.5,
+     borderRadius: 15,
+     
+   },
+   buttonStyleFinal: {
+    // backgroundColor: 'rgba(111, 202, 186, 1)',
+     borderColor: 'rgba(111, 202, 186, 1)',
+     backgroundColor: '#ffffff',
+     borderWidth: 1.5,
+     borderRadius: 15,
+  },
+  buttonStyleDelete: {
+    // backgroundColor: 'red',
+    borderColor: 'red',
+    backgroundColor: '#ffffff',
+    borderWidth: 1.5,
+    borderRadius: 15,
+  }, 
+  containerStyleBD: {
+    width: 120,
+    alignSelf: 'center',
+    margin:5,
+    // marginHorizontal: 50,
+    // marginVertical: 18,
+    // marginLeft: 7,
+},
+questions: {
+  borderWidth: 1.5,
+  borderColor: '#000',
+  height: 90, 
+  borderRadius: 15,
+  fontSize: 20,
+  //alignSelf:'center',
+ // flexDirection: 'row',
+ // alignItems: 'center',
+  //justifyContent: 'space-between',
+ // paddingHorizontal: 20,
+  marginVertical: 10,
+  //marginLeft:2,
+},
+question:{
+  backgroundColor: 'transparent',
+  alignSelf:'center',
+  height: 90,
+  underlineColorAndroid: 'transparent',
+  width: 300,
+  fontSize: 20,
+  //marginLeft: 2,
+},
+//play quiz component page
+mainCardPlayQuiz: {
+  justifyContent: 'center',        
+  borderRadius: 20, 
+  marginLeft: 'auto',  
+  elevation: 6,
+  shadowColor: '#6949FD',
+  shadowOpacity: 0.9,
+  shadowRadius: 2,  
+  width: Dimensions.get('window').width - 35,
+  height: Dimensions.get('window').height * 0.80,
+},
+headplayquiz: {
+  color: '#000000',
+  textAlign: 'center',  
+  fontSize: 18,
+  fontFamily: 'roboto',        
+},
+headplayquizhost: {
+  color: '#000000',
+  textAlign: 'center',
+  ////textTransform: 'uppercase',
+  fontSize: 20,
+  fontFamily: 'roboto',        
+},
+firstCardText: {
+  color: '#000000',
+  fontSize: 15,
+  fontFamily: 'roboto',       
+  textAlign: 'center',       
+},
+access:{
+  color: '#000000',
+  textAlign: 'center',  
+  fontSize: 18, 
+  fontFamily: 'roboto', 
+},
+//Finalize quiz
+container: {
+  flex: 1,
+},
+mainCardF: {
+  height: 600,
+  borderRadius: 40,
+  width: '102%',
+  marginLeft: '-1%',
+  elevation: 7,
+  shadowColor: '#6949FD',
+  shadowOpacity: 0.9,
+  shadowRadius: 2,
+  marginTop: 20,
+},
+norwegianF: {
+  color: '#000000',
+  textAlign: 'center',
+  //textTransform: 'uppercase',
+  fontSize: 22,
+  fontFamily: 'roboto',
+  marginTop: '2%',
+},
+firstCardTextF: {
+  marginTop: '2%',
+  color: '#000000',
+  fontSize: 17,
+},
+selectF: {
+  textAlign: 'center',
+  fontSize: 19,
+  fontFamily: 'roboto',
+  color: '#000000'
+},
+resultCardF: {
+  height: 130,
+  borderRadius: 10,
+  borderColor: 'lightgray',
+  width: '95%',
+  marginLeft: '3%',
+  marginTop: '8%',
+},
+//finalized quiz page
+titleStyleFP:{
+  color: 'black',
+ // marginHorizontal: 20,
+  fontSize: 15,
+ // fontFamily: 'roboto',
+  ////textTransform: 'uppercase',
+},
+containerStyleFP:{
+  width: '50%',
+  alignSelf:'center',
+  padding:"2%",
+  //marginHorizontal: 50,
+ // marginVertical: 16,
+ // marginLeft: '-6%',
+},
+timeTextFP:{
+color: '#000000',
+    textAlign:'center',
+  marginTop: '2%',
+  // marginLeft: '17%',
+  borderRadius: 3,
+  borderWidth:1.5,
+  width:"40%",
+  margin:10,
+  padding:5,
+},
+textViewFP:{
+  color: '#000000', width:"60%", fontSize: 15, marginTop: '1%'
+},
+
+})
+
+export default externalStyle;
