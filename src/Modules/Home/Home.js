@@ -40,7 +40,7 @@ function Home(props) {
 
   return (
     <>
-      <MainHeader drawer={drawer} drawerView={drawerView} />
+      {/* <MainHeader drawer={drawer} drawerView={drawerView} /> */}
       <DrawerLayoutAndroid
         ref={drawer}
         drawerWidth={300}

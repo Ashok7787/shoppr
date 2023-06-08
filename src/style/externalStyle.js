@@ -12,7 +12,8 @@ const externalStyle=StyleSheet.create({
   mainHeader:{
     justifyContent: 'space-between',
     border: '5px solid green',
-    backgroundColor: 'orange',
+    backgroundColor: '#f0aa4f',
+   // backgroundColor:'#6949FD',
     padding: 10,
     height: Dimensions.get('window').height * 0.12,
   },
@@ -29,8 +30,8 @@ const externalStyle=StyleSheet.create({
   },
   bottomViewLP: {
     flex: 1.5,
-    backgroundColor: '#FFFFFF',
-    bottom: 50,
+    backgroundColor: '#f0aa4f',
+    bottom: 0,
     borderTopStartRadius: 60,
     borderTopEndRadius: 60,
   },
@@ -350,7 +351,10 @@ color: '#000000',
 textViewFP:{
   color: '#000000', width:"60%", fontSize: 15, marginTop: '1%'
 },
-
+imagesize:{
+  width: Dimensions.get('window').width / 3,
+  height: Dimensions.get('window').height * 0.15,
+}
 })
 
 export default externalStyle;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   View,
   Text,
@@ -11,48 +11,62 @@ import {
 } from 'react-native';
 import {Input, Button} from 'react-native-elements';
 import externalStyle from '../../style/externalStyle';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 class LoginScreen extends Component {
-
   state = {
     username: 'sushil@tekorero.com',
     password: 'Orange123$',
   };
 
-  handleLogin = () => {    
+  handleLogin = () => {
     this.props.navigation.navigate('Main');
   };
 
   render() {
     return (
       <>
-        <StatusBar backgroundColor={'#6949FD'} barStyle="light-content" />
+        <StatusBar backgroundColor={'#f0aa4f'} barStyle="light-content" />
         {/* Container start */}
         <ScrollView
           style={{flex: 1, backgroundColor: '#FFFFFF'}}
           showsVerticalScrollIndicator={false}>
           {/* Logo View */}
           <ImageBackground
+            source={require('../../../assets/images/home.png')}
             style={{
-              height: Dimensions.get('window').height / 2.5,
-              backgroundColor: '#6949FD',
+              height: Dimensions.get('window').height / 2.3,
+              backgroundColor: '#e6eff5',
             }}>
-            <View >
+            {/* <View >
               <Image
                 style={externalStyle.logoLP}
                // source={require('../../../assets/images/logo.png')}
               />
-            </View>
+            </View> */}
           </ImageBackground>
           {/* Bottom View */}
           <View style={externalStyle.bottomViewLP}>
             {/* Welcome View */}
             <View>
-              <Text style={externalStyle.welcomeLP}>Welcome</Text>
+              <View style={styles.downContainer}>
+                <MaterialCommunityIcons name="cart" color="black" size={100} />
+                <Text
+                  style={{
+                    fontSize: 50,
+                    color: 'black',
+                    alignSelf: 'center',
+                    fontFamily: 'roboto',
+                  }}
+                  // style={externalStyle.welcomeLP}
+                >
+                  Shoppr
+                </Text>
+              </View>
               {/* Login Button */}
               <View
                 style={{
-                  height: 'auto',
+                  height: Dimensions.get('window').height * 0.44,
                   justifyContent: 'center',
                   alignItems: 'center',
                 }}>
@@ -79,4 +93,12 @@ class LoginScreen extends Component {
   }
 }
 export default LoginScreen;
-
+const styles = StyleSheet.create({
+  downContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: 35,
+    marginTop: '6%',
+  },
+});

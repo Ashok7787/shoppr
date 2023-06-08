@@ -19,7 +19,7 @@ const SignupScreen = ({ props }) => {
 
     return (
         <>
-            <StatusBar backgroundColor={'#6949FD'} barStyle='light-content' />
+            <StatusBar backgroundColor={'#f0aa4f'} barStyle='light-content' />
             {/* Container start */}
             <ScrollView
                 style={{ flex: 1, backgroundColor: '#FFFFFF' }}

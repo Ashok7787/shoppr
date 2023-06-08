@@ -7,7 +7,7 @@ import {
   View,
   Dimensions,
 } from 'react-native';
-import {Avatar, Badge} from 'react-native-elements';
+import {Avatar, Badge, SearchBar} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Logo from '../Components/Elements/Logo';
 import {useNavigation} from '@react-navigation/native';
@@ -18,15 +18,20 @@ function MainHeader(props) {
   const [cartItems, setCartItems] = useState(0);
   const navigation = useNavigation();
   const [drawerView, setDrawerView] = useState(props.drawerView);
-const  openDrawerView = () => {
+  const [search, setSearch] = useState('');
+
+  const updateSearch = search => {
+    setSearch({search});
+  };
+  const openDrawerView = () => {
     props.drawer.current.openDrawer();
-     setDrawerView(true);
-}
-const  closeDrawerView = () => {
+    setDrawerView(true);
+  };
+  const closeDrawerView = () => {
     props.drawer.current.closeDrawer();
-     setDrawerView(false);
-}
-//console.warn(drawerView);
+    setDrawerView(false);
+  };
+  //console.warn(drawerView);
   return (
     <>
       <View style={externalStyle.mainHeader}>
@@ -34,11 +39,10 @@ const  closeDrawerView = () => {
           style={{
             display: 'flex',
             justifyContent: 'space-between',
-            flexDirection: 'row'           
-          }}
-          >
+            flexDirection: 'row',
+          }}>
           {/* <Button title="Open" onPress={() => drawer.current.openDrawer()} /> */}
-          {drawerView === false ? 
+          {/* {drawerView === false ? 
          
             <Avatar
               rounded
@@ -57,7 +61,27 @@ const  closeDrawerView = () => {
                 uri: 'https://st1.bollywoodlife.com/wp-content/uploads/2021/08/Allu-Arjun-3.jpg?impolicy=Medium_Widthonly&w=1280&h=900',
               }}
             />
-          }
+          } */}
+          <View>
+            <SearchBar
+              containerStyle={{
+                borderRadius: 10,
+                width: Dimensions.get('window').width / 1.24,
+                padding: 0,
+              }}
+              inputContainerStyle={{
+                backgroundColor: '#e4e7f5',
+              }}
+              round="true"
+              placeholderTextColor="black"
+              spinnerVisibility={true}
+              showLoading={true}
+              lightTheme="true"
+              placeholder="Type Here..."
+              onChangeText={updateSearch}
+              value={search}
+            />
+          </View>
 
           <View style={{padding: 10}}>
             <Icon
@@ -68,7 +92,7 @@ const  closeDrawerView = () => {
             />
             <Badge
               size="large"
-                value={cartItems}
+              value={cartItems}
               containerStyle={{position: 'absolute', top: -4, right: -4}}
             />
           </View>

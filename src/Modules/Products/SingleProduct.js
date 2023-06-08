@@ -21,11 +21,11 @@ function SingleProduct(props) {
     const [isAdded, setIsAdded] = useState(props.isAdded);
   return (
     <>
-      <View >
+      <View style={{flex:2}}>
       <Card containerStyle={styles.containerStyleC}>
         <Text style={{fontSize: 24}}>{props.item.name || ''}</Text>
         <Image
-          style={{width: 150, height: 150}}
+          style={externalStyle.imagesize}
           source={{uri: `${base_url}/image/${props.item.imageId}`}}
           alt={props.item.imageId}
         />
@@ -61,6 +61,6 @@ const styles = StyleSheet.create({
     width:100,
     shadowColor: '#6949FD',
     shadowOpacity: 0.2,
-    width: Dimensions.get('window').width / 1.09,
+    width: Dimensions.get('window').width / 2.2,
     height: Dimensions.get('window').height * 0.3,}
 });
