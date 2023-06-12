@@ -27,7 +27,7 @@ function AllProducts(props) {
 //  console.warn(props.products);
   return (
     <>
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
+      {/* <ScrollView contentInsetAdjustmentBehavior="automatic"> */}
         <View>
           {props.products.map(item => {
             return (
@@ -62,7 +62,7 @@ function AllProducts(props) {
             );
           })}
         </View>
-      </ScrollView>
+      {/* </ScrollView> */}
     </>
   );
 }
