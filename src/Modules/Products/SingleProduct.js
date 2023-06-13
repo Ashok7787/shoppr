@@ -19,39 +19,37 @@ import {Card} from 'react-native-elements';
 import {addProductToCart} from './ProductAction';
 
 function SingleProduct(props) {
-  useEffect(() => {
-   
-  }, []);
+  useEffect(() => {}, []);
   const [isAdded, setIsAdded] = useState(props.isAdded);
-  const [size,setSize] = useState("");
-  const [quantity,setQuantity] = useState("");
-const [colour,setColour] = useState("");
+  const [size, setSize] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const [colour, setColour] = useState('');
   const itemId = props.item.productId;
 
   const addCart = (productId, merchantDetailsId) => {
-   // const value = localStorage.getItem("cartId");
-   // const shopName = this.props.shopName.shopLink;
+    // const value = localStorage.getItem("cartId");
+    // const shopName = this.props.shopName.shopLink;
     // const str = shopName && shopName.replace(/ +/g, "");
     // const finalstr=`/${str}/home`
     //console.log(value);
-   // const final = JSON.parse(value);
-   // const finalcartId = final !== null ? final.cartId : null;
-   // const finalshopName = final !== null ? final.shopName : null;
+    // const final = JSON.parse(value);
+    // const finalcartId = final !== null ? final.cartId : null;
+    // const finalshopName = final !== null ? final.shopName : null;
     setSize();
     setQuantity();
     props.addProductToCart({
-      cartId: "1600",
+      cartId: '1600',
       colour: colour,
       identifierType: '',
       itemId,
       quantity: quantity,
       size: size,
-     storeTerminal: {storeId: props.item.merchantDetailsId},
+      storeTerminal: {storeId: props.item.merchantDetailsId},
     });
   };
   return (
     <>
-      <View style={{flex: 2}}>
+      <View>
         <Card containerStyle={styles.containerStyleC}>
           <Text style={{fontSize: 24}}>{props.item.name || ''}</Text>
           <Image
@@ -86,11 +84,12 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     elevation: 4,
     padding: 10,
-    height: 50,
-    width: 100,
+    // margin: 35,
+    justifyContent: 'center',
+    alignItems: 'center',
     shadowColor: '#6949FD',
     shadowOpacity: 0.2,
-    width: Dimensions.get('window').width / 2.2,
-    height: Dimensions.get('window').height * 0.3,
+    width: Dimensions.get('window').width / 1.3,
+    height: Dimensions.get('window').height * 0.42,
   },
 });

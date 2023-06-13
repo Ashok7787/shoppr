@@ -17,7 +17,9 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import externalStyle from '../../style/externalStyle';
 import {base_url} from '../../Config/Auth';
+import { useNavigation } from '@react-navigation/native';
 function HomePageData(props) {
+  const navigation = useNavigation();
   useEffect(() => {
     //  props.getCategory();
     props.getHomePageData();
@@ -31,15 +33,52 @@ function HomePageData(props) {
           display: 'flex',
           flexDirection: 'column',
         }}>
-        <Text style={{fontSize: 30, color: 'blue'}}>
-          {homePage.heading1 || ''}
-        </Text>
-        <Card style={styles.containerStyleH}>
+        <View
+          style={{
+            padding: 10,
+          }}>
           <Image
             style={styles.imagesize}
             source={{uri: `${base_url}/image/${homePage.imageId}`}}
             alt={homePage.imageId}
           />
+          <View
+            style={{
+              padding: 10,
+            }}>
+            <Button
+              title="Create your Webstore"
+              onPress={() => navigation.navigate('Signup')}
+            />
+          </View>
+          <View
+            style={{
+              padding: 10,
+            }}>
+            <Button
+              title="Log In"
+              onPress={() => navigation.navigate('Login')}
+            />
+          </View>
+        </View>
+        <View
+          style={{
+            padding: 10,
+          }}>
+          <Image
+            style={styles.imagesize}
+            source={{uri: `${base_url}/image/${homePage.imageId2}`}}
+            alt={homePage.imageId2}
+          />
+          <Button
+            title="Browse Categories"
+            //  onPress={() => addCart()}
+          />
+        </View>
+        <Text style={{fontSize: 30, color: 'blue'}}>
+          {homePage.heading1 || ''}
+        </Text>
+        <Card style={styles.containerStyleH}>
           <Text style={{fontSize: 15, color: 'blue'}}>
             {homePage.text1 || ''}
           </Text>
@@ -49,11 +88,6 @@ function HomePageData(props) {
           {homePage.heading2 || ''}
         </Text>
         <Card style={styles.containerStyleH}>
-          <Image
-            style={styles.imagesize}
-            source={{uri: `${base_url}/image/${homePage.imageId2}`}}
-            alt={homePage.imageId2}
-          />
           <Text style={{fontSize: 15, color: 'blue'}}>
             {homePage.text2 || ''}
           </Text>
@@ -63,11 +97,11 @@ function HomePageData(props) {
           {homePage.heading3 || ''}
         </Text>
         <Card style={styles.containerStyleH}>
-          <Image
+          {/* <Image
             style={styles.imagesize}
             source={{uri: `${base_url}/image/${homePage.imageId3}`}}
             alt={homePage.imageId3}
-          />
+          /> */}
           <Text style={{fontSize: 15, color: 'blue'}}>
             {homePage.text3 || ''}
           </Text>

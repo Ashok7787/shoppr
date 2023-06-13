@@ -18,6 +18,7 @@ import {getCategory} from '../Quiz/QuizAction';
 import {getAllProducts} from './ProductAction';
 import { base_url } from '../../Config/Auth';
 import SingleProduct from './SingleProduct';
+import Swiper from 'react-native-swiper'
 function AllProducts(props) {
   const [isAdded, setIsAdded] = useState(false);
   useEffect(() => {
@@ -48,16 +49,19 @@ function AllProducts(props) {
                 <Text style={{fontSize: 24}}>{item.category || ''}</Text>
                
               </View>
+              <Swiper containerStyle={styles.wrapper} showsButtons={true}>
               {item.products.filter(
                     pdct => pdct.instockInd === true && pdct.openInd === true,
                   )
                   .map(prds => {
                     return (
-                      <View>
+                      <View style={{justifyContent: 'center',
+                      alignItems: 'center',}}>
                         <SingleProduct item={prds} isAdded={isAdded}/>
                       </View>
                     );
-                  })}
+                  })} 
+                  </Swiper>
               </>
             );
           })}
@@ -81,3 +85,10 @@ const mapDispatchToProps = dispatch =>
   );
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllProducts);
+const styles = StyleSheet.create({
+  wrapper: {
+    width: Dimensions.get('window').width / 1,
+    height: Dimensions.get('window').height * 0.5,
+  },
+  
+})

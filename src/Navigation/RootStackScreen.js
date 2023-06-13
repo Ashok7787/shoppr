@@ -18,9 +18,9 @@ function RootStackScreen() {
                 }}
             >
                 <Stack.Screen name="newHome" component={NewHome} />
-                {/* <Stack.Screen name="Login" component={LoginScreen} />
+                <Stack.Screen name="Login" component={LoginScreen} />
                 <Stack.Screen name="Main" component={HomeNavigator} />
-                <Stack.Screen name="Signup" component={SignupScreen} /> */}
+                <Stack.Screen name="Signup" component={SignupScreen} />
                 {/* <Stack.Screen name="appnavigator" component={AppNavigator} /> */}
             </Stack.Navigator>
         </NavigationContainer>
