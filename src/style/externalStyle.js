@@ -352,7 +352,7 @@ textViewFP:{
   color: '#000000', width:"60%", fontSize: 15, marginTop: '1%'
 },
 imagesize:{
-  width: Dimensions.get('window').width / 3,
+  width: Dimensions.get('window').width / 1.5,
   height: Dimensions.get('window').height * 0.15,
 }
 })
