@@ -17,7 +17,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import externalStyle from '../../style/externalStyle';
 import {base_url} from '../../Config/Auth';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 function HomePageData(props) {
   const navigation = useNavigation();
   useEffect(() => {
@@ -75,36 +75,30 @@ function HomePageData(props) {
             //  onPress={() => addCart()}
           />
         </View>
-        <Text style={{fontSize: 30, color: 'blue'}}>
+        <Text style={styles.heading}>
           {homePage.heading1 || ''}
         </Text>
-        <Card style={styles.containerStyleH}>
-          <Text style={{fontSize: 15, color: 'blue'}}>
-            {homePage.text1 || ''}
-          </Text>
+        <Card>
+          <Text style={styles.text1}>{homePage.text1 || ''}</Text>
         </Card>
 
-        <Text style={{fontSize: 30, color: 'blue'}}>
+        <Text style={styles.heading}>
           {homePage.heading2 || ''}
         </Text>
-        <Card style={styles.containerStyleH}>
-          <Text style={{fontSize: 15, color: 'blue'}}>
-            {homePage.text2 || ''}
-          </Text>
+        <Card>
+          <Text style={styles.text1}>{homePage.text2 || ''}</Text>
         </Card>
 
-        <Text style={{fontSize: 30, color: 'blue'}}>
+        <Text style={styles.heading}>
           {homePage.heading3 || ''}
         </Text>
-        <Card style={styles.containerStyleH}>
+        <Card>
           {/* <Image
             style={styles.imagesize}
             source={{uri: `${base_url}/image/${homePage.imageId3}`}}
             alt={homePage.imageId3}
           /> */}
-          <Text style={{fontSize: 15, color: 'blue'}}>
-            {homePage.text3 || ''}
-          </Text>
+          <Text style={styles.text1}>{homePage.text3 || ''}</Text>
         </Card>
       </View>
     </>
@@ -143,5 +137,13 @@ const styles = StyleSheet.create({
   imagesize: {
     width: Dimensions.get('window').width / 1.3,
     height: Dimensions.get('window').height * 0.3,
+  },
+  text1: {
+    fontSize: 15,
+    color: '#4c54f5',
+  },
+  heading: {
+    fontSize: 30,
+    color: '#4c54f5',
   },
 });

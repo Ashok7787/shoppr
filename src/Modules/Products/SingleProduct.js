@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
   containerStyleC: {
     borderRadius: 10,
     borderColor: '#000',
-    borderWidth: 1.5,
+    borderWidth: 0.4,
     elevation: 4,
     padding: 10,
     // margin: 35,
