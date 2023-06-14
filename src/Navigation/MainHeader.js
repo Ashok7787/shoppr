@@ -88,7 +88,7 @@ function MainHeader(props) {
               name="shopping-cart"
               size={30}
               color="black"
-              onPress={() => navigation.navigate('User')}
+              onPress={() => navigation.navigate('cart')}
             />
             <Badge
               size="large"

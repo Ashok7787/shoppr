@@ -53,10 +53,10 @@ function AllProducts(props) {
               {item.products.filter(
                     pdct => pdct.instockInd === true && pdct.openInd === true,
                   )
-                  .map(prds => {
+                  .map((prds,id) => {
                     return (
                       <View style={{justifyContent: 'center',
-                      alignItems: 'center',}}>
+                      alignItems: 'center',}} key={id}>
                         <SingleProduct item={prds} isAdded={isAdded}/>
                       </View>
                     );

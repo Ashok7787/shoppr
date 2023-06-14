@@ -75,23 +75,17 @@ function HomePageData(props) {
             //  onPress={() => addCart()}
           />
         </View>
-        <Text style={styles.heading}>
-          {homePage.heading1 || ''}
-        </Text>
+        <Text style={styles.heading}>{homePage.heading1 || ''}</Text>
         <Card>
           <Text style={styles.text1}>{homePage.text1 || ''}</Text>
         </Card>
 
-        <Text style={styles.heading}>
-          {homePage.heading2 || ''}
-        </Text>
+        <Text style={styles.heading}>{homePage.heading2 || ''}</Text>
         <Card>
           <Text style={styles.text1}>{homePage.text2 || ''}</Text>
         </Card>
 
-        <Text style={styles.heading}>
-          {homePage.heading3 || ''}
-        </Text>
+        <Text style={styles.heading}>{homePage.heading3 || ''}</Text>
         <Card>
           {/* <Image
             style={styles.imagesize}

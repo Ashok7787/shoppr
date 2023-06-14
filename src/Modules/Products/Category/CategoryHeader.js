@@ -28,19 +28,25 @@ function AllProducts(props) {
     <>
       <View>
         <ScrollView horizontal={true}>
-          {props.products.map(item => {
+          {props.products.map((item,id) => {
             return (
               <>
-                <View>
-                  
+                <View key={id}>
                   <Card containerStyle={styles.containerStyleC}>
-                  <Avatar.Image
-                    size={70}
-                    source={{
-                        uri: 'https://st1.bollywoodlife.com/wp-content/uploads/2021/08/Allu-Arjun-3.jpg?impolicy=Medium_Widthonly&w=1280&h=900',
-                      }}
-                    // source={require('../assets/avatar.png')}
-                  />
+                    <View 
+                    style={{
+                      marginTop:-40
+                    }}
+                    >
+                      <Avatar.Image
+                        size={70}
+                        source={{
+                          uri: 'https://st1.bollywoodlife.com/wp-content/uploads/2021/08/Allu-Arjun-3.jpg?impolicy=Medium_Widthonly&w=1280&h=900',
+                        }}
+                        // source={require('../assets/avatar.png')}
+                      />
+                    </View>
+
                     <Text style={{fontSize: 15}}>{item.category || ''}</Text>
                   </Card>
                 </View>
@@ -72,8 +78,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: '#000',
     borderWidth: 1.5,
-    marginLeft: 0,
+    marginLeft: 5,
     elevation: 4,
+    marginTop:Dimensions.get('window').height * 0.04,
     width: Dimensions.get('window').width / 4,
     height: Dimensions.get('window').height * 0.15,
     shadowColor: '#6949FD',

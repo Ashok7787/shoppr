@@ -25,9 +25,20 @@ function NewHome() {
           flex: 1,
           marginBottom: 0,
         }}>
-        <MainHeader />
+        <View>
+          <MainHeader />
+        </View>
 
-        <CategoryHeader />
+        <View
+        style=
+        {{
+         
+          height: Dimensions.get('window').height * 0.2,
+        }}
+        >
+          <CategoryHeader />
+        </View>
+
         <ScrollView contentInsetAdjustmentBehavior="automatic">
           <View
             style={{
