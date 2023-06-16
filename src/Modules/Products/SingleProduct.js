@@ -18,37 +18,39 @@ import externalStyle from '../../style/externalStyle';
 import {base_url} from '../../Config/Auth';
 import {Card} from 'react-native-elements';
 import {addProductToCart} from './ProductAction';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function SingleProduct(props) {
   useEffect(() => {}, []);
   const [isAdded, setIsAdded] = useState(props.isAdded);
-  const [size, setSize] = useState('');
-  const [quantity, setQuantity] = useState('');
-  const [colour, setColour] = useState('');
-  const itemId = props.item.productId;
+  const [size, setSize] = useState(props.size);
+  const [quantity, setQuantity] = useState(props.quantity);
+  const [colour, setColour] = useState(props.colour);
+  //const itemId = props.item.productId;
 
-  const addCart = (productId, merchantDetailsId) => {
-    // const value = localStorage.getItem("cartId");
-    // const shopName = this.props.shopName.shopLink;
-    // const str = shopName && shopName.replace(/ +/g, "");
-    // const finalstr=`/${str}/home`
-    //console.log(value);
-    // const final = JSON.parse(value);
-    // const finalcartId = final !== null ? final.cartId : null;
-    // const finalshopName = final !== null ? final.shopName : null;
-    setSize();
-    setQuantity();
-    const cartId = store.getState('cartId');
-    props.addProductToCart({
-      cartId: cartId,
-      colour: colour,
-      identifierType: '',
-      itemId,
-      quantity: quantity,
-      size: size,
-      storeTerminal: {storeId: props.item.merchantDetailsId},
-    });
-  };
+  // const addCart =  (productId, merchantDetailsId, shopLink) => {
+  //   const value =  AsyncStorage.getItem('cartId');
+  //   const str = shopLink;
+
+  //   const final = JSON.parse(value);
+  //   console.log(typeof value, value);
+  //   const finalcartId = final !== null ? final.cartId : null;
+  //   const finalshopName = final !== null ? final.shopName : null;
+  //   let data = {
+  //     //   productName:this.props.customer.length && this.props.customer[0].name || "",
+
+  //     itemId: productId,
+  //     cartId: str === finalshopName ? finalcartId : null,
+  //     colour: colour,
+  //     size: size,
+  //     identifierType: "",
+  //     quantity: 1,
+  //     storeTerminal: {
+  //       storeId: merchantDetailsId,
+  //     },
+  //   };
+  //   props.addProductToCart(data, str);
+  // };
   return (
     <>
       <View>
@@ -73,15 +75,17 @@ function SingleProduct(props) {
                   flexDirection: 'row',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  justifyContent:'space-evenly',
+                  justifyContent: 'space-evenly',
 
                   width: Dimensions.get('window').width / 1.5,
                 }}>
-                <Text style={{fontSize: 15,color:'black'}}>Price</Text>
+                <Text style={{fontSize: 15, color: 'black'}}>Price</Text>
                 <Text style={{textDecorationLine: 'line-through'}}>
                   {props.item.price}
                 </Text>
-                <Text style={{color:'black'}}>{props.item.discountedPrice}</Text>
+                <Text style={{color: 'black'}}>
+                  {props.item.discountedPrice}
+                </Text>
               </View>
             )}
           </View>
@@ -172,7 +176,16 @@ function SingleProduct(props) {
               // onPress={() => handleRemoveFromCart(item)}
             />
           ) : (
-            <Button title="Add to cart" onPress={() => addCart()} />
+            <Button
+              title="Add to cart"
+              onPress={() =>
+                props.addCart(
+                  props.item.productId,
+                  props.item.merchantDetailsId,
+                  props.item.shopLink,
+                )
+              }
+            />
           )}
         </Card>
       </View>

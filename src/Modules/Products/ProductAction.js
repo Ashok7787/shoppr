@@ -2,16 +2,16 @@ import * as types from './ProductActionTypes';
 import axios from 'axios';
 import {base_url} from '../../Config/Auth';
 import store from '../../Store';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export const getAllProducts = () => dispatch => {
   dispatch({
     type: types.GET_PRODUCTS_REQUEST,
   });
   axios
     .get(`${base_url}/productSearch/product/customerProduct`, {
-      headers: {
-        Authorization: 'Bearer ' + store.getState().auth.token || '',
-      },
+      // headers: {
+      //   Authorization: 'Bearer ' + store.getState().auth.token || '',
+      // },
     })
     .then(res => {
       //  console.log(res.data);
@@ -21,7 +21,7 @@ export const getAllProducts = () => dispatch => {
       });
     })
     .catch(err => {
-      console.log(err.response);
+      console.log("new",err.response);
       dispatch({
         type: types.GET_PRODUCTS_FAILURE,
         payload: err,
@@ -29,22 +29,28 @@ export const getAllProducts = () => dispatch => {
     });
 };
 
-export const addProductToCart = () => dispatch => {
+export const addProductToCart = (data,shopName) => dispatch => {
   dispatch({
     type: types.ADD_PRODUCT_REQUEST,
   });
 
   axios
-    .post(`${base_url}/checkout/cart/add`,)
-    .then(res => {      
-      console.log(res.data);
+    .post(`${base_url}/checkout/cart/add`,data ,{
+      headers: {
+        Authorization: 'Bearer ' + AsyncStorage.getItem("token")|| '',
+      },})
+    .then(res => {    
+      const final={cartId:res.data.storeCart.cartId,shopName}
+     
+      AsyncStorage.setItem("cartId",JSON.stringify(final))  
+      console.log("data",res.data);
       dispatch({
         type: types.ADD_PRODUCT_SUCCESS,
         payload: res.data,
       });
     })
     .catch(err => {
-      console.log(err.data);
+      console.log("add",err.data);
       dispatch({
         type: types.ADD_PRODUCT_FAILURE,
         payload: err,
