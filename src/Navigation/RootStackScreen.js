@@ -1,0 +1,32 @@
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import LoginScreen from '../Modules/Auth/LoginScreen';
+import HomeNavigator from '../Modules/Home/HomeNavigator';
+import SignupScreen from '../Modules/Auth/SignupScreen';
+import NewHome from '../Modules/Home/NewHome';
+import CartProduct from '../Modules/Cart/CartProduct';
+// import AppNavigator from './AppNavigator';
+
+const Stack = createStackNavigator();
+
+function RootStackScreen() {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator
+                screenOptions={{
+                    headerShown: false,
+                }}
+            >
+                <Stack.Screen name="newHome" component={NewHome} />
+                <Stack.Screen name="Login" component={LoginScreen} />
+                <Stack.Screen name="Main" component={HomeNavigator} />
+                <Stack.Screen name="Signup" component={SignupScreen} />
+                <Stack.Screen name="cart" options={{headerShown:true}} component={CartProduct} />
+                {/* <Stack.Screen name="appnavigator" component={AppNavigator} /> */}
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
+}
+
+export default RootStackScreen;
