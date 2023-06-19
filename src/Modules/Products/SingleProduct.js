@@ -19,6 +19,7 @@ import {base_url} from '../../Config/Auth';
 import {Card} from 'react-native-elements';
 import {addProductToCart} from './ProductAction';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import CurrencySymbol from '../../Components/Elements/CurrencySymbol';
 
 function SingleProduct(props) {
   useEffect(() => {}, []);
@@ -80,9 +81,11 @@ function SingleProduct(props) {
                   width: Dimensions.get('window').width / 1.5,
                 }}>
                 <Text style={{fontSize: 15, color: 'black'}}>Price</Text>
+                <CurrencySymbol currencyType={props.item.currencyName} />
                 <Text style={{textDecorationLine: 'line-through'}}>
                   {props.item.price}
                 </Text>
+                <CurrencySymbol currencyType={props.item.currencyName} />
                 <Text style={{color: 'black'}}>
                   {props.item.discountedPrice}
                 </Text>
@@ -178,12 +181,12 @@ function SingleProduct(props) {
           ) : (
             <Button
               title="Add to cart"
-              onPress={() =>
+              onPress={() =>{
                 props.addCart(
                   props.item.productId,
                   props.item.merchantDetailsId,
                   props.item.shopLink,
-                )
+                )}
               }
             />
           )}

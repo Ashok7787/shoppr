@@ -20,25 +20,44 @@ import {base_url} from '../../Config/Auth';
 import SingleProduct from './SingleProduct';
 import Swiper from 'react-native-swiper';
 import {addProductToCart} from './ProductAction';
+import {getShopName,getCartProductList} from '../Cart/CartAction';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import CurrencySymbol from '../../Components/Elements/CurrencySymbol';
+
+import {Picker} from '@react-native-picker/picker';
+import {Card} from 'react-native-elements';
 
 function AllProducts(props) {
   const [isAdded, setIsAdded] = useState(false);
-  const [size, setSize] = useState('');
-  const [quantity, setQuantity] = useState('');
-  const [colour, setColour] = useState('');
+  const [size, setSize] = useState("");
+  const [quantity, setQuantity] = useState("1");
+  const [colour, setColour] = useState("");
   useEffect(() => {
     props.getAllProducts();
-    const value = JSON.stringify(AsyncStorage.getItem('cartId'));
-    const final = JSON.parse(value);
-    if (final !== null) {
-      final.cartId && props.getAllProducts(final.cartId);
-    }
-    //  props.getCategory();
-    props.getAllProducts();
+    const final = async () => {JSON.stringify(await AsyncStorage.getItem('cartId'))}
+    
+      if (final !== null) {
+        final.cartId && props.getCartProductList(final.cartId);
+      }
+    
+
+    // return () => {
+    //   // this now gets called when the component unmounts
+    // };
   }, []);
-  const addCart =  (productId, merchantDetailsId, shopLink) => {
-    const value = JSON.stringify( AsyncStorage.getItem('cartId'));
+  // useEffect( () => {
+  // //  props.getShopName(window.location.pathname);
+  //   const value = JSON.stringify( AsyncStorage.getItem('cartId'));
+  //   const final = JSON.parse(value);
+  //   if (final !== null) {
+  //     final.cartId && props.getAllProducts(final.cartId);
+  //   }
+
+  // }, []);
+
+  const addCart = async (productId, merchantDetailsId, shopLink) => {
+   
+    const value = JSON.stringify(await AsyncStorage.getItem('cartId'));
     const str = shopLink;
 
     const final = JSON.parse(value);
@@ -83,8 +102,9 @@ function AllProducts(props) {
                 }}>
                 <Text style={{fontSize: 24}}>{item.category || ''}</Text>
               </View>
-              <Swiper containerStyle={styles.wrapper} 
-             // showsButtons={true}
+              <Swiper
+                containerStyle={styles.wrapper}
+                // showsButtons={true}
               >
                 {item.products
                   .filter(
@@ -95,14 +115,183 @@ function AllProducts(props) {
                       <View
                         style={{justifyContent: 'center', alignItems: 'center'}}
                         key={id}>
-                        <SingleProduct 
-                        size={size}
-                        colour={colour}
-                        quantity={quantity}
+                        {/* <SingleProduct
+                          size={size}
+                          setSize={setSize}
+                          colour={colour}
+                          setColour={setColour}
+                          quantity={quantity}
+                          setQuantity={setQuantity}
                           item={prds}
                           isAdded={isAdded}
                           addCart={addCart}
-                        />
+                        /> */}
+                        <View>
+                          <Card containerStyle={styles.containerStyleC}>
+                            <Text style={{fontSize: 24}}>
+                              {prds.name || ''}
+                            </Text>
+                            {prds.imageId ? (
+                              <Image
+                                style={externalStyle.imagesize}
+                                source={{
+                                  uri: `${base_url}/image/${prds.imageId}`,
+                                }}
+                                alt={prds.imageId}
+                              />
+                            ) : (
+                              <Text>Image Not Available</Text>
+                            )}
+                            <View>
+                              {prds.discountedPrice === 0 ? (
+                                <Text>{prds.price}</Text>
+                              ) : (
+                                <View
+                                  style={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    justifyContent: 'space-evenly',
+
+                                    width: Dimensions.get('window').width / 1.5,
+                                  }}>
+                                  <Text style={{fontSize: 15, color: 'black'}}>
+                                    Price
+                                  </Text>
+                                  <CurrencySymbol
+                                    currencyType={prds.currencyName}
+                                  />
+                                  <Text
+                                    style={{
+                                      textDecorationLine: 'line-through',
+                                    }}>
+                                    {prds.price}
+                                  </Text>
+                                  <CurrencySymbol
+                                    currencyType={prds.currencyName}
+                                  />
+                                  <Text style={{color: 'black'}}>
+                                    {prds.discountedPrice}
+                                  </Text>
+                                </View>
+                              )}
+                            </View>
+                            <View
+                              style={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                justifyContent: 'space-between',
+                                margin: 5,
+                              }}>
+                              <View
+                                style={{
+                                  borderWidth: 1.6,
+                                  borderColor: 'orange',
+                                  borderRadius: 4,
+                                  margin: 2,
+                                  width: Dimensions.get('window').width / 2.8,
+                                  height:
+                                    Dimensions.get('window').height * 0.06,
+                                }}>
+                                {prds.colourDTO &&
+                                prds.colourDTO.length &&
+                                prds.colourDTO[0].colour === '' ? (
+                                  <Picker
+                                    selectedValue={colour}
+                                    style={{height: 30, width: 140}}
+                                    onValueChange={(itemValue, itemIndex) =>
+                                      setColour(itemValue)
+                                    }>
+                                    <Picker.Item
+                                      label="No Option"
+                                      value="No Option"
+                                    />
+                                  </Picker>
+                                ) : (
+                                  <Picker
+                                    selectedValue={colour}
+                                    style={{height: 30, width: 140}}
+                                    onValueChange={(itemValue, itemIndex) =>
+                                      setColour(itemValue)
+                                    }>
+                                    {prds.colourDTO &&
+                                      prds.colourDTO.length &&
+                                      prds.colourDTO.map(item => {
+                                        return (
+                                          <Picker.Item
+                                            label={item.colour}
+                                            value={item.colour}
+                                          />
+                                        );
+                                      })}
+                                  </Picker>
+                                )}
+                              </View>
+                              <View
+                                style={{
+                                  borderWidth: 1.6,
+                                  borderColor: 'orange',
+                                  borderRadius: 4,
+                                  margin: 2,
+                                  width: Dimensions.get('window').width / 2.8,
+                                  height:
+                                    Dimensions.get('window').height * 0.06,
+                                }}>
+                                {prds.sizeDTO &&
+                                prds.sizeDTO.length &&
+                                prds.sizeDTO[0].productSize === '' ? (
+                                  <Picker
+                                    selectedValue={size}
+                                    style={{height: 30, width: 140}}
+                                    onValueChange={(itemValue, itemIndex) =>
+                                      setSize(itemValue)
+                                    }>
+                                    <Picker.Item
+                                      label="No Option"
+                                      value="No Option"
+                                    />
+                                  </Picker>
+                                ) : (
+                                  <Picker
+                                    selectedValue={size}
+                                    style={{height: 30, width: 140}}
+                                    onValueChange={(itemValue, itemIndex) =>
+                                      setSize(itemValue)
+                                    }>
+                                    {prds.sizeDTO &&
+                                      prds.sizeDTO.length &&
+                                      prds.sizeDTO.map(item => {
+                                        return (
+                                          <Picker.Item
+                                            label={item.productSize}
+                                            value={item.productSize}
+                                          />
+                                        );
+                                      })}
+                                  </Picker>
+                                )}
+                              </View>
+                            </View>
+                            {/* {isAdded ? (
+            <Button
+              title="Remove to cart"
+              // onPress={() => handleRemoveFromCart(item)}
+            />
+          ) : ( */}
+                            <Button
+                              title="Add to cart"
+                              onPress={() => {
+                                addCart(
+                                  prds.productId,
+                                  prds.merchantDetailsId,
+                                  prds.shopLink,
+                                );
+                              }}
+                            />
+                            {/* )} */}
+                          </Card>
+                        </View>
                       </View>
                     );
                   })}
@@ -123,9 +312,9 @@ const mapStateToProps = ({products, quiz}) => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      //  getCategory,
+      getShopName,
       addProductToCart,
-      getAllProducts,
+      getAllProducts,getCartProductList
     },
     dispatch,
   );

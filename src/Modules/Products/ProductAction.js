@@ -21,7 +21,7 @@ export const getAllProducts = () => dispatch => {
       });
     })
     .catch(err => {
-      console.log("new",err.response);
+      console.log('new', err.response);
       dispatch({
         type: types.GET_PRODUCTS_FAILURE,
         payload: err,
@@ -29,28 +29,32 @@ export const getAllProducts = () => dispatch => {
     });
 };
 
-export const addProductToCart = (data,shopName) => dispatch => {
+export const addProductToCart = (data, shopName) => dispatch => {
   dispatch({
     type: types.ADD_PRODUCT_REQUEST,
   });
 
   axios
-    .post(`${base_url}/checkout/cart/add`,data ,{
+    .post(`${base_url}/checkout/cart/add`, data, {
       headers: {
-        Authorization: 'Bearer ' + AsyncStorage.getItem("token")|| '',
-      },})
-    .then(res => {    
-      const final={cartId:res.data.storeCart.cartId,shopName}
+        Authorization: 'Bearer ' + AsyncStorage.getItem('token') || '',
+      },
+    })
+    .then(res => {
      
-      AsyncStorage.setItem("cartId",JSON.stringify(final))  
-      console.log("data",res.data);
+      (async () => {
+        const final = {cartId: res.data.storeCart.cartId, shopName}
+        await AsyncStorage.setItem('cartId', JSON.stringify(final));
+        
+      })();
+      console.log('data', res.data);
       dispatch({
         type: types.ADD_PRODUCT_SUCCESS,
         payload: res.data,
       });
     })
     .catch(err => {
-      console.log("add",err.data);
+      console.log('add', err.data);
       dispatch({
         type: types.ADD_PRODUCT_FAILURE,
         payload: err,
@@ -78,7 +82,7 @@ export const getHomePageData = () => dispatch => {
       });
     })
     .catch(err => {
-    //  console.log(err.response);
+      //  console.log(err.response);
       dispatch({
         type: types.GET_HOME_PAGE_DATA_FAILURE,
         payload: err,

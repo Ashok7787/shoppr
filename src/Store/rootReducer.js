@@ -4,6 +4,7 @@ import { combineReducers } from 'redux';
 import { authReducer } from '../Modules/Auth/AuthReducer';
 import { quizReducer } from '../Modules/Quiz/QuizReducer';
 import { productReducer } from '../Modules/Products/ProductReducer';
+import {cartReducer} from '../Modules/Cart/CartReducer';
 
 /**
  *  All of application reducers import goes here...
@@ -11,7 +12,8 @@ import { productReducer } from '../Modules/Products/ProductReducer';
 const appReducer = combineReducers({
     auth: authReducer,
     quiz: quizReducer,
-    products: productReducer
+    products: productReducer,
+    cart: cartReducer,
 });
 
 const rootReducer = (state, action) => {
