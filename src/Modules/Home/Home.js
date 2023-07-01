@@ -1,17 +1,18 @@
-import React, {useRef, useState} from 'react';
+import React,{useRef, useState} from 'react';
+import AllProducts from '../Products/AllProducts';
+import MainHeader from '../../Navigation/MainHeader';
+import CategoryHeader from '../Products/Category/CategoryHeader';
 import {
   Button,
   DrawerLayoutAndroid,
   Text,
   StyleSheet,
+  StatusBar,
+  ScrollView,
   View,
   Dimensions,
 } from 'react-native';
-
-import MainHeader from '../../Navigation/MainHeader';
-import externalStyle from '../../style/externalStyle';
-import AllProducts from '../Products/AllProducts';
-import CategoryHeader from '../Products/Category/CategoryHeader';
+import HomePageData from './HomePageData';
 
 function Home(props) {
   const drawer = useRef(null);
@@ -40,24 +41,41 @@ function Home(props) {
 
   return (
     <>
-      {/* <MainHeader drawer={drawer} drawerView={drawerView} /> */}
+    <StatusBar backgroundColor={'#f0aa4f'} barStyle="light-content" />
+      <MainHeader drawer={drawer} drawerView={drawerView} />
       <DrawerLayoutAndroid
         ref={drawer}
         drawerWidth={300}
         drawerPosition={drawerPosition}
         renderNavigationView={navigationView}>
-        <View style={styles.container}>
-          <View 
-          style={{
-            margin:5,
-            padding:5
-          }}
-          >
-            <CategoryHeader />
+        <View
+        style={{
+          flex: 1,
+          marginBottom: 0,
+        }}>
+        {/* <View>
+          <MainHeader />
+        </View> */}
+        <View
+        style=
+        {{
+         
+          height: Dimensions.get('window').height * 0.2,
+        }}
+        >
+          <CategoryHeader />
+        </View>
+        <ScrollView contentInsetAdjustmentBehavior="automatic">
+          <View
+            style={{
+              padding: 10,
+            }}>
+            <HomePageData />
           </View>
           <View>
             <AllProducts />
           </View>
+        </ScrollView>
         </View>
       </DrawerLayoutAndroid>
     </>

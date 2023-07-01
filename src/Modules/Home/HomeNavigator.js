@@ -24,6 +24,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MainHeader from '../../Navigation/MainHeader';
 import Profile from '../Auth/Profile';
+import Notification from './Notification';
 
 
 const Tab = createBottomTabNavigator();
@@ -60,7 +61,7 @@ export default function HomeNavigator(props) {
     //     <Stack.Screen name="Edit Quiz" component={EditQuizS} />
     // </Stack.Navigator>
     <>
-    <MainHeader />
+    {/* <MainHeader /> */}
       <Tab.Navigator
         initialRouteName="home"
         screenOptions={{
@@ -79,7 +80,7 @@ export default function HomeNavigator(props) {
         />
         <Tab.Screen
           name="products"
-          component={AllProducts}
+          component={Notification}
           options={{
             tabBarLabel: 'Updates',
             tabBarIcon: ({color, size}) => (

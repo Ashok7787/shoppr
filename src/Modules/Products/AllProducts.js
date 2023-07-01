@@ -20,7 +20,7 @@ import {base_url} from '../../Config/Auth';
 import SingleProduct from './SingleProduct';
 import Swiper from 'react-native-swiper';
 import {addProductToCart} from './ProductAction';
-import {getShopName,getCartProductList} from '../Cart/CartAction';
+import {getShopName, getCartProductList} from '../Cart/CartAction';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CurrencySymbol from '../../Components/Elements/CurrencySymbol';
 
@@ -29,17 +29,18 @@ import {Card} from 'react-native-elements';
 
 function AllProducts(props) {
   const [isAdded, setIsAdded] = useState(false);
-  const [size, setSize] = useState("");
-  const [quantity, setQuantity] = useState("1");
-  const [colour, setColour] = useState("");
+  const [size, setSize] = useState('');
+  const [quantity, setQuantity] = useState('1');
+  const [colour, setColour] = useState('');
   useEffect(() => {
     props.getAllProducts();
-    const final = async () => {JSON.stringify(await AsyncStorage.getItem('cartId'))}
-    
-      if (final !== null) {
-        final.cartId && props.getCartProductList(final.cartId);
-      }
-    
+    const final = async () => {
+      JSON.stringify(await AsyncStorage.getItem('cartId'));
+    };
+
+    if (final !== null) {
+      final.cartId && props.getCartProductList(final.cartId);
+    }
 
     // return () => {
     //   // this now gets called when the component unmounts
@@ -56,7 +57,6 @@ function AllProducts(props) {
   // }, []);
 
   const addCart = async (productId, merchantDetailsId, shopLink) => {
-   
     const value = JSON.stringify(await AsyncStorage.getItem('cartId'));
     const str = shopLink;
 
@@ -314,7 +314,8 @@ const mapDispatchToProps = dispatch =>
     {
       getShopName,
       addProductToCart,
-      getAllProducts,getCartProductList
+      getAllProducts,
+      getCartProductList,
     },
     dispatch,
   );

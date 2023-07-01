@@ -42,7 +42,7 @@ function MainHeader(props) {
             flexDirection: 'row',
           }}>
           {/* <Button title="Open" onPress={() => drawer.current.openDrawer()} /> */}
-          {/* {drawerView === false ? 
+          {drawerView === false ? 
          
             <Avatar
               rounded
@@ -61,12 +61,12 @@ function MainHeader(props) {
                 uri: 'https://st1.bollywoodlife.com/wp-content/uploads/2021/08/Allu-Arjun-3.jpg?impolicy=Medium_Widthonly&w=1280&h=900',
               }}
             />
-          } */}
+          }
           <View>
             <SearchBar
               containerStyle={{
                 borderRadius: 10,
-                width: Dimensions.get('window').width / 1.24,
+                width: Dimensions.get('window').width / 1.7,
                 padding: 0,
               }}
               inputContainerStyle={{

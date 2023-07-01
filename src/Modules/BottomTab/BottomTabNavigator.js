@@ -2,6 +2,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AllProducts from '../Products/AllProducts';
 import CategoryHeader from '../Products/Category/CategoryHeader';
+import Home from '../Home/Home';
+import Notification from '../Home/Notification';
 
 
 const Tab = createBottomTabNavigator();
@@ -16,7 +18,7 @@ export default function BottomTabNavigator(){
     >
       <Tab.Screen
         name="category"
-        component={CategoryHeader}
+        component={Home}
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ color, size }) => (
@@ -26,7 +28,7 @@ export default function BottomTabNavigator(){
       />
       <Tab.Screen
         name="products"
-        component={AllProducts}
+        component={Notification}
         options={{
           tabBarLabel: 'Updates',
           tabBarIcon: ({ color, size }) => (
